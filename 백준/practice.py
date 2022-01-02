@@ -1,1 +1,1 @@
-print(type(*))
+print(mul(3, 4))
