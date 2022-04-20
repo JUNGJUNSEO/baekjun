@@ -1,25 +1,24 @@
 import sys
 sys.setrecursionlimit(10**6)
+input = sys.stdin.readline
 
 
 def solve(parent):
     global ans
 
-    if not tree[parent]:
-        return 0
+    w1, w2 = 0, 0
+    for child, weight in sorted(tree[parent], key=lambda x: -x[1]):
 
-    lst = list()
-    for child, weight in tree[parent]:
+        temp = weight+solve(child)
 
-        lst.append(weight+solve(child))
+        if temp > w1:
+            w1 = temp
+        else:
+            w2 = max(w2, temp)
 
-    lst.sort(reverse=True)
-    if len(lst) > 1:
-        ans = max(ans, lst[0]+lst[1])
-    else:
-        ans = max(ans, lst[0])
+    ans = max(ans, w1+w2)
 
-    return max(lst)
+    return w1
 
 
 ans = 0
@@ -27,8 +26,8 @@ n = int(input())
 tree = [[] for _ in range(n+1)]
 
 for _ in range(n-1):
-    parent, child, weight = map(int, input().split())
-    tree[parent].append((child, weight))
+    p, c, w = map(int, input().split())
+    tree[p].append((c, w))
 
 solve(1)
 print(ans)
