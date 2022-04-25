@@ -1,10 +1,9 @@
-from collections import defaultdict
 import sys
 input = sys.stdin.readline
 
 n, m = map(int, input().split())
 a = list(map(int, input().split()))
-prefix = defaultdict(int)
+cnt = [0]*m
 s = 0
 ans = 0
 
@@ -14,9 +13,8 @@ for i in range(n):
 
     if d == 0:
         ans += 1
-    if d in prefix:
-        ans += prefix[d]
 
-    prefix[d] += 1
+    ans += cnt[d]
+    cnt[d] += 1
 
 print(ans)
