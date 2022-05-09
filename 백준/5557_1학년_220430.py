@@ -17,5 +17,4 @@ for i in range(n-1):
                 new_dict[key+a[i]*s] += d[key]
 
     d = new_dict
-    print(d)
 print(d[a[n-1]])
