@@ -54,6 +54,3 @@ for i in range(k+1):
         ans = min(ans, move[i][ex][ey])
 
 print(ans if ans != sys.maxsize else -1)
-
-for i in range(n):
-    print(a[i])
