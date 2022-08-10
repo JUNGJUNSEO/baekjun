@@ -1,11 +1,14 @@
+import sys
+input = sys.stdin.readline
+# → ↓ ↗ ↘
 dx = [0, 1, -1, 1]
 dy = [1, 0, 1, 1]
 
 
 def check(x, y, s, idx):
-    lst = list()
-    ox, oy = x, y
+    visit[x][y][i] = True
     cnt = 1
+
     while True:
         x, y = x+dx[idx], y+dy[idx]
         if 0 <= x < 19 and 0 <= y < 19:
@@ -27,10 +30,9 @@ for y in range(19):
     for x in range(19):
         for i in range(4):
             if a[x][y] != 0 and not visit[x][y][i]:
-                visit[x][y][i] = True
                 if check(x, y, a[x][y], i):
                     print(a[x][y])
                     print(x+1, y+1)
-                    exit()
+                    sys.exit()
 
 print(0)
