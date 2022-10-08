@@ -45,8 +45,7 @@ a = [list(map(int, input().split())) for _ in range(n)]
 path = [[-1]*n for _ in range(n)]
 team = [[-1]*n for _ in range(n)]
 t_que = [deque() for _ in range(m)]
-# 0: 시계방향, 1: 반시계방향
-dir = [0]*m
+reverse = [False]*m
 round = []
 get_round()
 num = 0
@@ -79,7 +78,7 @@ for i in range(m):
         else:
             r_que[i].append(c)
 
-reverse = [False]*m
+
 ans = 0
 for i in range(k):
     i = i % (n*4)
@@ -90,13 +89,11 @@ for i in range(k):
             if not reverse[team[x][y]]:
                 if t_que[team[x][y]][path[x][y]] > 0:
                     ans += t_que[team[x][y]][path[x][y]]**2
-                    dir[team[x][y]] = dir[team[x][y]] ^ 1
                     reverse[team[x][y]] = True
                     break
             else:
                 if r_que[team[x][y]][path[x][y]] > 0:
                     ans += r_que[team[x][y]][path[x][y]]**2
-                    dir[team[x][y]] = dir[team[x][y]] ^ 1
                     reverse[team[x][y]] = False
                     break
 
