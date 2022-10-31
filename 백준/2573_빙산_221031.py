@@ -79,7 +79,7 @@ while True:
                 cnt += 1
                 bfs(i, j)
 
-    if cnt > 2:
+    if cnt >= 2:
         print(ans)
         break
 
