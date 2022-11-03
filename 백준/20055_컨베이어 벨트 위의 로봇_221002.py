@@ -12,8 +12,7 @@ while True:
     # 1
     d.rotate(1)
     r.rotate(1)
-    if r[n-1]:
-        r[n-1] = False
+    r[n-1] = False
     # 2
     for i in range(n-1, -1, -1):
         if r[i] and d[i+1] > 0 and not r[i+1]:
@@ -32,6 +31,6 @@ while True:
         if d[0] == 0:
             k -= 1
 
-    if k == 0:
+    if k <= 0:
         print(ans)
         break
