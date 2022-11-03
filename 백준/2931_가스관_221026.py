@@ -11,7 +11,6 @@ def in_range(x, y):
 
 r, c = map(int, input().split())
 a = [list(input()) for _ in range(r)]
-check = [[False]*c for _ in range(r)]
 cnt = [[0] * c for _ in range(r)]
 
 for i in range(r):
@@ -56,20 +55,15 @@ for x in range(r):
             for block, dir in blocks.items():
 
                 total = abs(cnt[x][y])
-                check = True
 
                 for i in dir:
                     nx, ny = x + dx[i], y + dy[i]
 
-                    if not in_range(nx, ny):
-                        check = False
+                    if not in_range(nx, ny) or cnt[nx][ny] == 0:
                         break
                     if cnt[nx][ny] == 1:
                         total -= 1
-                    if cnt[nx][ny] == 0:
-                        check = False
-                        break
 
-                if check and total == 0:
+                if total == 0:
                     print(x+1, y+1, block)
                     exit()
