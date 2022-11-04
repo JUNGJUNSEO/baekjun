@@ -92,6 +92,3 @@ while True:
     ans += 1
 
 print(ans)
-
-for i in range(n):
-    print(grid[i])
