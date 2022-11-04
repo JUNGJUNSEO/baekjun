@@ -21,17 +21,19 @@ def solve(case):
     n2 = str2num(w2)
     n3 = str2num(w3)
 
-    if n1+n2 == n3:
-        return True
+    return n1+n2 == n3
 
 
-w1, w2, w3 = input().split()
-s = set(list(w1)+list(w2)+list(w3))
+w1, w2, w3 = map(list, input().split())
+s = set(w1+w2+w3)
 s = list(s)
 d = {}
 l = len(s)
 ans = 'NO'
+
 for case in permutations(list(range(10)), l):
+    if l > 10:
+        break
     if solve(case):
         ans = 'YES'
         break
