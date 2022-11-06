@@ -19,6 +19,7 @@ while True:
         break
 
     ans += 1
+
 while sum(s):
     s.append(0)
     s.popleft()
